@@ -30,11 +30,17 @@ public class MainGUI extends javax.swing.JFrame {
         MenuPanel = new javax.swing.JPanel();
         lblTitleWallpaper = new javax.swing.JLabel();
         btnSingleplayer = new javax.swing.JButton();
-        btnMultiplayer = new javax.swing.JButton();
         lblMenuBackground = new javax.swing.JLabel();
         SingleplayerPanel = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
-        lblCPUImg = new javax.swing.JLabel();
+        lblDraw = new javax.swing.JLabel();
+        lblCpuWin = new javax.swing.JLabel();
+        lblPlayerWin = new javax.swing.JLabel();
+        lblCpuScore = new javax.swing.JLabel();
+        lblPlayer = new javax.swing.JLabel();
+        lblCpu = new javax.swing.JLabel();
+        lblPlayerScore = new javax.swing.JLabel();
+        lblCpuImg = new javax.swing.JLabel();
         lblPlayerImg = new javax.swing.JLabel();
         btnRock = new javax.swing.JButton();
         btnPaper = new javax.swing.JButton();
@@ -52,23 +58,18 @@ public class MainGUI extends javax.swing.JFrame {
         lblTitleWallpaper.setBackground(new java.awt.Color(1, 1, 1));
         lblTitleWallpaper.setFont(lblTitleWallpaper.getFont().deriveFont((lblTitleWallpaper.getFont().getStyle() | java.awt.Font.ITALIC) | java.awt.Font.BOLD, lblTitleWallpaper.getFont().getSize()+36));
         lblTitleWallpaper.setForeground(new java.awt.Color(1, 1, 1));
-        lblTitleWallpaper.setBorder(null);
         MenuPanel.add(lblTitleWallpaper);
         lblTitleWallpaper.setBounds(190, 90, 360, 110);
         lblTitleWallpaper.setIcon(ImageUtility.newJLabelWallpaper("src/view/image/menu-title-wallpaper.png", lblTitleWallpaper));
 
-        btnSingleplayer.setText("Singleplayer");
+        btnSingleplayer.setText("Start");
         btnSingleplayer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSingleplayerActionPerformed(evt);
             }
         });
         MenuPanel.add(btnSingleplayer);
-        btnSingleplayer.setBounds(270, 230, 140, 31);
-
-        btnMultiplayer.setText("Multiplayer");
-        MenuPanel.add(btnMultiplayer);
-        btnMultiplayer.setBounds(270, 280, 140, 31);
+        btnSingleplayer.setBounds(270, 230, 140, 24);
         MenuPanel.add(lblMenuBackground);
         lblMenuBackground.setBounds(0, 0, 710, 510);
         lblMenuBackground.setIcon(ImageUtility.newJLabelWallpaper("src/view/image/menu-wallpaper.jpg", lblMenuBackground));
@@ -83,9 +84,43 @@ public class MainGUI extends javax.swing.JFrame {
         SingleplayerPanel.add(jSeparator1);
         jSeparator1.setBounds(0, 223, 700, 17);
 
-        lblCPUImg.setText("jLabel1");
-        SingleplayerPanel.add(lblCPUImg);
-        lblCPUImg.setBounds(250, 90, 150, 100);
+        lblDraw.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblDraw.setText("Draw!");
+        SingleplayerPanel.add(lblDraw);
+        lblDraw.setBounds(300, 20, 150, 50);
+        lblDraw.setVisible(false);
+
+        lblCpuWin.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblCpuWin.setText("CPU Wins!");
+        SingleplayerPanel.add(lblCpuWin);
+        lblCpuWin.setBounds(440, 130, 150, 50);
+        lblCpuWin.setVisible(false);
+
+        lblPlayerWin.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lblPlayerWin.setText("Player Wins!");
+        SingleplayerPanel.add(lblPlayerWin);
+        lblPlayerWin.setBounds(440, 270, 150, 50);
+        lblPlayerWin.setVisible(false);
+
+        lblCpuScore.setText("0");
+        SingleplayerPanel.add(lblCpuScore);
+        lblCpuScore.setBounds(600, 70, 40, 14);
+
+        lblPlayer.setText("Player");
+        SingleplayerPanel.add(lblPlayer);
+        lblPlayer.setBounds(30, 40, 80, 14);
+
+        lblCpu.setText("CPU");
+        SingleplayerPanel.add(lblCpu);
+        lblCpu.setBounds(600, 40, 50, 14);
+
+        lblPlayerScore.setText("0");
+        SingleplayerPanel.add(lblPlayerScore);
+        lblPlayerScore.setBounds(30, 70, 40, 14);
+
+        lblCpuImg.setText("jLabel1");
+        SingleplayerPanel.add(lblCpuImg);
+        lblCpuImg.setBounds(250, 90, 150, 100);
 
         lblPlayerImg.setText("jLabel2");
         SingleplayerPanel.add(lblPlayerImg);
@@ -117,6 +152,10 @@ public class MainGUI extends javax.swing.JFrame {
         });
         SingleplayerPanel.add(btnScissor);
         btnScissor.setBounds(500, 430, 100, 59);
+
+        lblSingleplayerBackground.setBackground(new java.awt.Color(0, 0, 0));
+        lblSingleplayerBackground.setForeground(new java.awt.Color(255, 255, 255));
+        lblSingleplayerBackground.setOpaque(true);
         SingleplayerPanel.add(lblSingleplayerBackground);
         lblSingleplayerBackground.setBounds(0, -3, 700, 510);
         lblSingleplayerBackground.setIcon(ImageUtility.newJLabelWallpaper("src/view/image/singleplayer-wallpaper.jpg", lblSingleplayerBackground));
@@ -155,34 +194,40 @@ public class MainGUI extends javax.swing.JFrame {
     private void btnRockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRockActionPerformed
 
         SingleplayerController.runMatch(new Player(Player.ROCK), new Player(new Random().nextInt(3) + 1),
-                lblPlayerImg, lblCPUImg);
+                lblPlayerImg, lblCpuImg, lblPlayerScore, lblCpuScore, lblDraw, lblPlayerWin, lblCpuWin);
     }//GEN-LAST:event_btnRockActionPerformed
 
     private void btnPaperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPaperActionPerformed
 
         SingleplayerController.runMatch(new Player(Player.PAPER), new Player(new Random().nextInt(3) + 1),
-                lblPlayerImg, lblCPUImg);
+                lblPlayerImg, lblCpuImg, lblPlayerScore, lblCpuScore, lblDraw, lblPlayerWin, lblCpuWin);
     }//GEN-LAST:event_btnPaperActionPerformed
 
     private void btnScissorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScissorActionPerformed
 
         SingleplayerController.runMatch(new Player(Player.SCISSOR), new Player(new Random().nextInt(3) + 1),
-                lblPlayerImg, lblCPUImg);
+                lblPlayerImg, lblCpuImg, lblPlayerScore, lblCpuScore, lblDraw, lblPlayerWin, lblCpuWin);
     }//GEN-LAST:event_btnScissorActionPerformed
     //End SingleplayerGUI Buttons
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel MenuPanel;
     private javax.swing.JPanel SingleplayerPanel;
-    private javax.swing.JButton btnMultiplayer;
     private javax.swing.JButton btnPaper;
     private javax.swing.JButton btnRock;
     private javax.swing.JButton btnScissor;
     private javax.swing.JButton btnSingleplayer;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel lblCPUImg;
+    private javax.swing.JLabel lblCpu;
+    private javax.swing.JLabel lblCpuImg;
+    private javax.swing.JLabel lblCpuScore;
+    private javax.swing.JLabel lblCpuWin;
+    private javax.swing.JLabel lblDraw;
     private javax.swing.JLabel lblMenuBackground;
+    private javax.swing.JLabel lblPlayer;
     private javax.swing.JLabel lblPlayerImg;
+    private javax.swing.JLabel lblPlayerScore;
+    private javax.swing.JLabel lblPlayerWin;
     private javax.swing.JLabel lblSingleplayerBackground;
     private javax.swing.JLabel lblTitleWallpaper;
     // End of variables declaration//GEN-END:variables

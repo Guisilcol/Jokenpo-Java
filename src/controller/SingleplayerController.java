@@ -1,7 +1,6 @@
 package controller;
 
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import model.Player;
 import utility.ImageUtility;
 
@@ -18,40 +17,48 @@ public class SingleplayerController {
      * @param cpu Player object representing CPU choice
      * @param lblPlayerImg JLabel of the player to be modified
      * @param lblCPUImg JLabel of the CPU to be modified
+     * @param lblPlayerScore JLabel representing the player score
+     * @param lblCpuScore JLabel representing the CPU score
+     * @param lblDraw JLabel representing the draw of the match
+     * @param lblPlayerWin JLabel adverting the victory of the player
+     * @param lblCpuWin JLabel adverting the victory of the CPU
+     * 
      */
-    public static void runMatch(Player player1, Player cpu, JLabel lblPlayerImg, JLabel lblCPUImg){
+    public static void runMatch(Player player1, Player cpu, JLabel lblPlayerImg, JLabel lblCPUImg, JLabel lblPlayerScore, JLabel lblCpuScore,
+            JLabel lblDraw, JLabel lblPlayerWin, JLabel lblCpuWin){
         
         changeLabelImage(lblPlayerImg, player1);
         changeLabelImage(lblCPUImg, cpu);
         
-        advertiseWinner(player1, cpu);   
-    }
-   
-    /**
-     * Announce the winner of the match
-     * @param player1 Object player1 for comparison
-     * @param player2 Object player2 for comparison
-     */
-    public static void advertiseWinner(Player player1, Player player2){
+        lblDraw.setVisible(false);
+        lblPlayerWin.setVisible(false);
+        lblCpuWin.setVisible(false);
         
-        int result = Player.verifyWinner(player1, player2);
+        int result = Player.verifyWinner(player1, cpu);
         
         switch(result){
-            case 0:
-                
-                JOptionPane.showMessageDialog(null, "Draw!");
-                break;
             case 1:
-                
-                JOptionPane.showMessageDialog(null, "Player1 Win!");
+                changeScore(lblPlayerScore);
+                lblPlayerWin.setVisible(true);
                 break;
-            
             case 2:
-                
-                JOptionPane.showMessageDialog(null, "Player2 Win!");
+                changeScore(lblCpuScore);
+                lblCpuWin.setVisible(true);
                 break;
-                
-        }
+            default:
+                lblDraw.setVisible(true);
+                break;
+        } 
+    }
+ 
+    /**
+     * Add +1 in JLabel representing the score of the player or CPU
+     * @param label JLabel will change
+     */
+    public static void changeScore(JLabel label){
+        
+        int value = Integer.parseInt(label.getText());
+        label.setText( ++value +"");
     }
     
     /**
