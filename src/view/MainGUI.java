@@ -117,12 +117,8 @@ public class MainGUI extends javax.swing.JFrame {
         lblPlayerScore.setText("0");
         SingleplayerPanel.add(lblPlayerScore);
         lblPlayerScore.setBounds(30, 70, 40, 14);
-
-        lblCpuImg.setText("jLabel1");
         SingleplayerPanel.add(lblCpuImg);
         lblCpuImg.setBounds(250, 90, 150, 100);
-
-        lblPlayerImg.setText("jLabel2");
         SingleplayerPanel.add(lblPlayerImg);
         lblPlayerImg.setBounds(250, 250, 150, 100);
 
