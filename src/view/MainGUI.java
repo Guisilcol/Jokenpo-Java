@@ -69,7 +69,7 @@ public class MainGUI extends javax.swing.JFrame {
             }
         });
         MenuPanel.add(btnSingleplayer);
-        btnSingleplayer.setBounds(270, 230, 140, 24);
+        btnSingleplayer.setBounds(270, 280, 140, 31);
         MenuPanel.add(lblMenuBackground);
         lblMenuBackground.setBounds(0, 0, 710, 510);
         lblMenuBackground.setIcon(ImageUtility.newJLabelWallpaper("src/view/image/menu-wallpaper.jpg", lblMenuBackground));
@@ -104,19 +104,19 @@ public class MainGUI extends javax.swing.JFrame {
 
         lblCpuScore.setText("0");
         SingleplayerPanel.add(lblCpuScore);
-        lblCpuScore.setBounds(600, 70, 40, 14);
+        lblCpuScore.setBounds(600, 70, 40, 15);
 
         lblPlayer.setText("Player");
         SingleplayerPanel.add(lblPlayer);
-        lblPlayer.setBounds(30, 40, 80, 14);
+        lblPlayer.setBounds(30, 40, 80, 15);
 
         lblCpu.setText("CPU");
         SingleplayerPanel.add(lblCpu);
-        lblCpu.setBounds(600, 40, 50, 14);
+        lblCpu.setBounds(600, 40, 50, 15);
 
         lblPlayerScore.setText("0");
         SingleplayerPanel.add(lblPlayerScore);
-        lblPlayerScore.setBounds(30, 70, 40, 14);
+        lblPlayerScore.setBounds(30, 70, 40, 15);
         SingleplayerPanel.add(lblCpuImg);
         lblCpuImg.setBounds(250, 90, 150, 100);
         SingleplayerPanel.add(lblPlayerImg);
