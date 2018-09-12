@@ -45,7 +45,7 @@ public class MainGUI extends javax.swing.JFrame {
         btnScissor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Jokenpo!");
+	setTitle("Jokenpô!");
         setResizable(false);
 
         MenuPanel.setBackground(new java.awt.Color(255, 255, 255));
