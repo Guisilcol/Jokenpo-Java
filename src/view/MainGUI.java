@@ -27,11 +27,9 @@ public class MainGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        MenuPanel = new javax.swing.JPanel();
-        lblTitleWallpaper = new javax.swing.JLabel();
+        MenuPanel = new com.hermespasser.imgpanel.ImgPanel(null, com.hermespasser.imgpanel.ImageAnchor.FIT_IN_PANEL);
         btnSingleplayer = new javax.swing.JButton();
-        lblMenuBackground = new javax.swing.JLabel();
-        SingleplayerPanel = new javax.swing.JPanel();
+        SingleplayerPanel = new com.hermespasser.imgpanel.ImgPanel(null, com.hermespasser.imgpanel.ImageAnchor.FIT_IN_PANEL);
         jSeparator1 = new javax.swing.JSeparator();
         lblDraw = new javax.swing.JLabel();
         lblCpuWin = new javax.swing.JLabel();
@@ -45,22 +43,16 @@ public class MainGUI extends javax.swing.JFrame {
         btnRock = new javax.swing.JButton();
         btnPaper = new javax.swing.JButton();
         btnScissor = new javax.swing.JButton();
-        lblSingleplayerBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Jokenpô!");
+	setTitle("Jokenpô!");
         setResizable(false);
 
         MenuPanel.setBackground(new java.awt.Color(255, 255, 255));
         MenuPanel.setPreferredSize(new java.awt.Dimension(700, 500));
         MenuPanel.setLayout(null);
-
-        lblTitleWallpaper.setBackground(new java.awt.Color(1, 1, 1));
-        lblTitleWallpaper.setFont(lblTitleWallpaper.getFont().deriveFont((lblTitleWallpaper.getFont().getStyle() | java.awt.Font.ITALIC) | java.awt.Font.BOLD, lblTitleWallpaper.getFont().getSize()+36));
-        lblTitleWallpaper.setForeground(new java.awt.Color(1, 1, 1));
-        MenuPanel.add(lblTitleWallpaper);
-        lblTitleWallpaper.setBounds(190, 90, 360, 110);
-        lblTitleWallpaper.setIcon(ImageUtility.newJLabelWallpaper("src/view/image/menu-title-wallpaper.png", lblTitleWallpaper));
+        
+        MenuPanel.setImage(ImageUtility.getImage("src/view/image/menu-title-wallpaper.png"));
 
         btnSingleplayer.setText("Start");
         btnSingleplayer.addActionListener(new java.awt.event.ActionListener() {
@@ -70,9 +62,7 @@ public class MainGUI extends javax.swing.JFrame {
         });
         MenuPanel.add(btnSingleplayer);
         btnSingleplayer.setBounds(270, 280, 140, 31);
-        MenuPanel.add(lblMenuBackground);
-        lblMenuBackground.setBounds(0, 0, 710, 510);
-        lblMenuBackground.setIcon(ImageUtility.newJLabelWallpaper("src/view/image/menu-wallpaper.jpg", lblMenuBackground));
+        MenuPanel.setImage(ImageUtility.getImage("src/view/image/menu-wallpaper.jpg"));
 
         SingleplayerPanel.setPreferredSize(new java.awt.Dimension(700, 500));
         SingleplayerPanel.setVisible(false);
@@ -149,13 +139,8 @@ public class MainGUI extends javax.swing.JFrame {
         SingleplayerPanel.add(btnScissor);
         btnScissor.setBounds(500, 430, 100, 59);
 
-        lblSingleplayerBackground.setBackground(new java.awt.Color(0, 0, 0));
-        lblSingleplayerBackground.setForeground(new java.awt.Color(255, 255, 255));
-        lblSingleplayerBackground.setOpaque(true);
-        SingleplayerPanel.add(lblSingleplayerBackground);
-        lblSingleplayerBackground.setBounds(0, -3, 700, 510);
-        lblSingleplayerBackground.setIcon(ImageUtility.newJLabelWallpaper("src/view/image/singleplayer-wallpaper.jpg", lblSingleplayerBackground));
-
+        SingleplayerPanel.setImage(ImageUtility.getImage("src/view/image/singleplayer-wallpaper.jpg"));
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -207,8 +192,8 @@ public class MainGUI extends javax.swing.JFrame {
     //End SingleplayerGUI Buttons
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel MenuPanel;
-    private javax.swing.JPanel SingleplayerPanel;
+    private com.hermespasser.imgpanel.ImgPanel MenuPanel;
+    private com.hermespasser.imgpanel.ImgPanel SingleplayerPanel;
     private javax.swing.JButton btnPaper;
     private javax.swing.JButton btnRock;
     private javax.swing.JButton btnScissor;
@@ -219,12 +204,8 @@ public class MainGUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblCpuScore;
     private javax.swing.JLabel lblCpuWin;
     private javax.swing.JLabel lblDraw;
-    private javax.swing.JLabel lblMenuBackground;
     private javax.swing.JLabel lblPlayer;
     private javax.swing.JLabel lblPlayerImg;
     private javax.swing.JLabel lblPlayerScore;
     private javax.swing.JLabel lblPlayerWin;
-    private javax.swing.JLabel lblSingleplayerBackground;
-    private javax.swing.JLabel lblTitleWallpaper;
-    // End of variables declaration//GEN-END:variables
 }

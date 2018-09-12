@@ -1,14 +1,20 @@
 package model;
 
 /**
- *
  * @author guilherme
  */
 public class Player {
 
-    public static int ROCK = 1;
-    public static int PAPER = 2;
-    public static int SCISSOR = 3;
+    public enum Result {
+        PLAYER1_WIN,
+        PLAYER2_WIN,
+        DRAW
+    }
+    
+    public static final int ROCK = 1;
+    public static final int PAPER = 2;
+    public static final int SCISSOR = 3;
+    
     private int choose;
     
     /**
@@ -27,40 +33,25 @@ public class Player {
         return this.choose;
     }
     
+    public boolean defeated(Player opponent){
+        int choose = opponent.getChoose();
+        return ((this.choose == Player.PAPER   && choose == Player.ROCK)    ||
+                (this.choose == Player.ROCK    && choose == Player.SCISSOR) ||
+                (this.choose == Player.SCISSOR && choose == Player.PAPER));
+    }
     /**
      * Check the winning player
      * @param player1 A player1 object
      * @param player2 A player2 object
      * @return 1 if Plater1 wins, 2 if Player2 wins and 0 if draw
      */
-    public static int verifyWinner(Player player1, Player player2){
+    public static Result verifyWinner(Player player1, Player player2){     
+        if (player1.defeated(player2))
+            return Result.PLAYER1_WIN;
         
-        int choose1 = player1.getChoose();
-        int choose2 = player2.getChoose();
+        if (player2.defeated(player1))
+            return Result.PLAYER2_WIN;
         
-        if(choose1 == Player.PAPER && choose2 == Player.ROCK){
-            
-            return 1;
-        }else if(choose1 == Player.ROCK && choose2 == Player.PAPER){
-            
-            return 2;
-        }else if(choose1 == Player.ROCK && choose2 == Player.SCISSOR){
-            
-            return 1;
-        }else if(choose1 == Player.SCISSOR && choose2 == Player.ROCK){
-            
-            return 2;
-        }else if(choose1 == Player.SCISSOR && choose2 == Player.PAPER){
-            
-            return 1;
-        }else if(choose1 == Player.PAPER && choose2 == Player.SCISSOR){
-            
-            return 2;
-        }else{
-            
-            return 0;
-        }
-
+        return Result.DRAW;
     }
-
 }

@@ -1,14 +1,13 @@
 package utility;
 
 import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-/**
- * Class containing some functions for the manipulation of images
- * @author guilherme
- * 
- */
 public class ImageUtility {
     /**
      * Returns an ImageIcon object with the height and width of the JLabel reported.
@@ -26,5 +25,11 @@ public class ImageUtility {
         return newIcon;
     }
     
-    
+    public static Image getImage(String path) {
+    	try {
+			return ImageIO.read(new File(path));
+		} catch (IOException e) {
+			return null;
+		}
+    }
 }

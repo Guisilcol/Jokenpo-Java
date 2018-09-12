@@ -32,16 +32,14 @@ public class SingleplayerController {
         
         lblDraw.setVisible(false);
         lblPlayerWin.setVisible(false);
-        lblCpuWin.setVisible(false);
+        lblCpuWin.setVisible(false);      
         
-        int result = Player.verifyWinner(player1, cpu);
-        
-        switch(result){
-            case 1:
+        switch(Player.verifyWinner(player1, cpu)){
+            case PLAYER1_WIN:
                 changeScore(lblPlayerScore);
                 lblPlayerWin.setVisible(true);
                 break;
-            case 2:
+            case PLAYER2_WIN:
                 changeScore(lblCpuScore);
                 lblCpuWin.setVisible(true);
                 break;
@@ -56,9 +54,8 @@ public class SingleplayerController {
      * @param label JLabel will change
      */
     public static void changeScore(JLabel label){
-        
         int value = Integer.parseInt(label.getText());
-        label.setText( ++value +"");
+        label.setText(++value + "");
     }
     
     /**
@@ -66,8 +63,7 @@ public class SingleplayerController {
      * @param label to JLabel that will be modified
      * @param player Player object representing choice
      */
-    public static void changeLabelImage(JLabel label, Player player){
-        
+    public static void changeLabelImage(JLabel label, Player player){ 
         int choose = player.getChoose();
         
         switch(choose){
